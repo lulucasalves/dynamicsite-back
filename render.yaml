@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: node-websocket-server
+    runtime: node
+    repo: https://github.com/lulucasalves/dynamicsite-back # Substitua pelo link do seu repositório
+    branch: main # Substitua pelo nome da branch principal
+    plan: free # Plano gratuito (alterar conforme necessidade)
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000 # Porta padrão usada pelo serviço
