@@ -17,7 +17,7 @@ let activeConnections = [];
 wss.on("connection", (ws, req) => {
   const origin = req.headers.origin;
   const path = req.url;
-  const clientIP = req.connection.remoteAddress;
+  const clientIP = ws._socket.address();
 
   activeConnections = activeConnections.filter(
     (connection) => connection !== clientIP
@@ -41,9 +41,6 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(8081, () => {
-  console.log(`Servidor rodando em http://localhost:${8081}`);
-});
 // Inicia o servidor na porta 8080
 server.listen(8080, () => {
   console.log("Servidor WebSocket rodando na porta 8080");
